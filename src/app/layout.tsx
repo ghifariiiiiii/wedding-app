@@ -21,11 +21,11 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "The Wedding of Olivia & Ralph | 18 May 2027",
-  description: "You are cordially invited to celebrate the union of Olivia Margaretta & Ralph Alexander. Sunday, 18 May 2027.",
+  title: "Pernikahan Alghi & Yughi | 9 April 2027",
+  description: "You are cordially invited to celebrate the union of  M. Alghifari Agin Ramadhani & Yughi Shifa Linafusil Mugi Hidayah. Sabtu, 9 April 2027.",
   openGraph: {
-    title: "The Wedding of Olivia & Ralph",
-    description: "You are cordially invited to celebrate the union of Olivia Margaretta & Ralph Alexander.",
+    title: "Pernikahan Alghi & Yughi | 9 April 2027",
+    description: "You are cordially invited to celebrate the union of  M. Alghifari Agin Ramadhani & Yughi Shifa Linafusil Mugi Hidayah. Sabtu, 9 April 2027.",
     type: "website",
   },
 };
