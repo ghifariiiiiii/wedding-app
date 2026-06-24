@@ -43,8 +43,8 @@ export const weddingData = {
       instagram: "@ghiffaaaa",
       photo: "/foto-pengantin-pria.jpg",
     },
-    romanticPhoto: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920",
-    openingBg: "/FotoWisuda.jpeg",
+    romanticPhoto: "/FotoWisuda.jpeg",
+    openingBg: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1920",
   },
   date: {
     weddingDay: "9",
