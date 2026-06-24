@@ -67,7 +67,7 @@ export const weddingData = {
       date: "Sabtu, 9 April 2027",
       time: "06:00 PM - 09:00 PM (WIB)",
       venue: "Caffe Etery",
-      address: "Jl. Mejasem, Kota Tegal",
+      address: "Jl. Mejasem, Kertasmanggu, Kec. Kramat, Kabupaten Tegal, Jawa Tengah",
       mapsUrl: "https://maps.google.com/?q=The+Ritz-Carlton+Jakarta",
     } as WeddingEvent,
   },
@@ -77,7 +77,7 @@ export const weddingData = {
       title: "First Meet",
       description: "Hari pertama naik motor sama yughi:>",
       image: "FirstMeet.jpeg",
-    }, r
+    },
     {
       year: "2025",
       title: "Comeback after Breakup?",
@@ -87,7 +87,7 @@ export const weddingData = {
     {
       year: "2026",
       title: "The Graduation",
-      description: "Lulus dari Sirad YEYEYEY",
+      description: "Lulus dari Sirad YEYEYEYY",
       image: "FotoGrad.jpeg",
     },
   ] as LoveStoryItem[],
