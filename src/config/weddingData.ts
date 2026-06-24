@@ -52,7 +52,7 @@ export const weddingData = {
     countdownTarget: "2027-05-18T09:00:00", // Future date for active countdown
     formattedFull: "Sunday, 18 May 2027",
   },
-  musicUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", // Demo audio track
+  musicUrl: "/lagu-weeding.mp3", // Local wedding music
   events: {
     akad: {
       title: "Akad Nikah",
