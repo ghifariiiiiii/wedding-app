@@ -101,19 +101,9 @@ export default function WeddingInvitation() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   
-  // RSVP Form States
-  const [rsvpName, setRsvpName] = useState("");
-  const [rsvpStatus, setRsvpStatus] = useState("attending");
-  const [rsvpGuests, setRsvpGuests] = useState(1);
-  const [rsvpMessage, setRsvpMessage] = useState("");
-  const [rsvpLoading, setRsvpLoading] = useState(false);
-  const [rsvpSuccess, setRsvpSuccess] = useState(false);
+ 
 
-  // Wishes States
-  const [wishes, setWishes] = useState<any[]>([]);
-  const [wishName, setWishName] = useState("");
-  const [wishMessage, setWishMessage] = useState("");
-  const [wishLoading, setWishLoading] = useState(false);
+  
 
   // Lightbox Gallery State
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -140,22 +130,9 @@ export default function WeddingInvitation() {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch wishes list
-  const fetchWishes = async () => {
-    try {
-      const res = await fetch("/api/wishes");
-      if (res.ok) {
-        const data = await res.json();
-        setWishes(data);
-      }
-    } catch (err) {
-      console.error("Error loading wishes", err);
-    }
-  };
+  
 
-  useEffect(() => {
-    fetchWishes();
-  }, []);
+  
 
   const handleOpenInvitation = () => {
     setIsOpen(true);
@@ -175,106 +152,10 @@ export default function WeddingInvitation() {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
-  const handleRSVPSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setRsvpLoading(true);
-    try {
-      const res = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: rsvpName,
-          status: rsvpStatus,
-          guests: rsvpGuests,
-          message: rsvpMessage,
-        }),
-      });
+  
+  
 
-      if (res.ok) {
-        setRsvpSuccess(true);
-        confetti({
-          particleCount: 80,
-          spread: 60,
-          colors: ["#7EA7E8", "#4A7BC8"],
-        });
-        // Also save this as a wish on the wall if they filled the message
-        if (rsvpMessage.trim()) {
-          await fetch("/api/wishes", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: rsvpName,
-              message: rsvpMessage,
-            }),
-          });
-          fetchWishes();
-        }
-        setRsvpName("");
-        setRsvpMessage("");
-        setRsvpGuests(1);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setRsvpLoading(false);
-    }
-  };
-
-  const handleWishSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!wishName.trim() || !wishMessage.trim()) return;
-    setWishLoading(true);
-    try {
-      const res = await fetch("/api/wishes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: wishName,
-          message: wishMessage,
-        }),
-      });
-      if (res.ok) {
-        setWishName("");
-        setWishMessage("");
-        fetchWishes();
-        confetti({
-          particleCount: 40,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-        });
-        confetti({
-          particleCount: 40,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-        });
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setWishLoading(false);
-    }
-  };
-
-  const handleLikeWish = async (id: string) => {
-    try {
-      const res = await fetch("/api/wishes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "like",
-          id,
-        }),
-      });
-      if (res.ok) {
-        fetchWishes();
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+  
   return (
     <div className="relative min-h-screen">
       {/* Background Particles when invitation is open */}
@@ -985,181 +866,10 @@ export default function WeddingInvitation() {
             </div>
           </section>
 
-          {/* RSVP & Wishes Section */}
-          <section className="relative py-24 px-6 bg-[#F5F8FF]">
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
-              
-              {/* RSVP Form */}
-              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-[#7EA7E8]/20 shadow-lg space-y-6 h-fit">
-                <div className="space-y-2">
-                  <h3 className="font-playfair text-3xl font-bold text-[#4A7BC8]">
-                    Confirm Attendance
-                  </h3>
-                  <p className="text-gray-500 text-xs font-light">
-                    Please confirm your attendance status below by filling the official RSVP card.
-                  </p>
-                </div>
+        
 
-                {rsvpSuccess ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="p-6 bg-green-50 rounded-xl border border-green-200 text-center space-y-3"
-                  >
-                    <Heart className="w-12 h-12 text-[#4A7BC8] fill-[#4A7BC8]/10 mx-auto" />
-                    <h4 className="font-bold text-green-800 text-sm">Thank You for Confirming!</h4>
-                    <p className="text-xs text-green-700 font-light">
-                      Your attendance confirmation has been saved successfully in our system.
-                    </p>
-                    <button
-                      onClick={() => setRsvpSuccess(false)}
-                      className="text-xs font-semibold text-[#4A7BC8] underline cursor-pointer"
-                    >
-                      Update response
-                    </button>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleRSVPSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-xs uppercase font-extrabold tracking-wider text-gray-600 mb-1.5">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={rsvpName}
-                        onChange={(e) => setRsvpName(e.target.value)}
-                        placeholder="John Doe"
-                        className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-sm bg-white"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs uppercase font-extrabold tracking-wider text-gray-600 mb-1.5">
-                          Attendance Status
-                        </label>
-                        <select
-                          value={rsvpStatus}
-                          onChange={(e) => setRsvpStatus(e.target.value)}
-                          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-sm bg-white"
-                        >
-                          <option value="attending">Yes, I will attend</option>
-                          <option value="sorry">Sorry, I cannot attend</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs uppercase font-extrabold tracking-wider text-gray-600 mb-1.5">
-                          Number of Guests
-                        </label>
-                        <input
-                          type="number"
-                          min="1"
-                          max="10"
-                          value={rsvpGuests}
-                          onChange={(e) => setRsvpGuests(parseInt(e.target.value) || 1)}
-                          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-sm bg-white"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs uppercase font-extrabold tracking-wider text-gray-600 mb-1.5">
-                        Wishes Message (Optional)
-                      </label>
-                      <textarea
-                        rows={4}
-                        value={rsvpMessage}
-                        onChange={(e) => setRsvpMessage(e.target.value)}
-                        placeholder="Send warm wishes to Olivia & Ralph..."
-                        className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-sm bg-white"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={rsvpLoading}
-                      className="w-full bg-[#4A7BC8] hover:bg-[#3b6bb3] text-white font-semibold text-sm tracking-wider py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      {rsvpLoading ? "Submitting..." : "Submit RSVP"}
-                    </button>
-                  </form>
-                )}
-              </div>
-
-              {/* Real-time Wishes Wall */}
-              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-8 border border-[#7EA7E8]/20 shadow-lg space-y-6 flex flex-col justify-between max-h-[500px]">
-                <div className="space-y-2 shrink-0">
-                  <h3 className="font-playfair text-3xl font-bold text-[#4A7BC8]">Guest Wishes</h3>
-                  <p className="text-gray-500 text-xs font-light">
-                    Warm congratulations and beautiful prayers from our beloved guests.
-                  </p>
-                </div>
-
-                {/* Comment feeds container */}
-                <div className="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-thin">
-                  {wishes.map((wish) => (
-                    <div
-                      key={wish.id}
-                      className="p-4 bg-white rounded-xl shadow-sm border border-gray-50 flex items-start justify-between gap-3"
-                    >
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-1.5">
-                          <User size={12} className="text-[#4A7BC8]" />
-                          <p className="font-semibold text-[#4A7BC8] text-xs">{wish.name}</p>
-                        </div>
-                        <p className="text-xs text-gray-600 leading-relaxed font-light">
-                          {wish.message}
-                        </p>
-                        <span className="text-[9px] text-gray-400 block font-light">
-                          {new Date(wish.createdAt).toLocaleDateString()}
-                        </span>
-                      </div>
-
-                      <button
-                        onClick={() => handleLikeWish(wish.id)}
-                        className="flex items-center gap-1 text-[10px] text-pink-500 hover:scale-105 transition-transform bg-pink-50 px-2 py-1 rounded-full cursor-pointer"
-                      >
-                        <Heart size={10} className="fill-pink-500" />
-                        {wish.hearts || 0}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Submitting custom wishes instantly */}
-                <form onSubmit={handleWishSubmit} className="space-y-2 mt-4 shrink-0">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      required
-                      value={wishName}
-                      onChange={(e) => setWishName(e.target.value)}
-                      placeholder="Your Name"
-                      className="w-1/3 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-xs bg-white"
-                    />
-                    <input
-                      type="text"
-                      required
-                      value={wishMessage}
-                      onChange={(e) => setWishMessage(e.target.value)}
-                      placeholder="Write a message..."
-                      className="flex-1 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#4A7BC8] text-xs bg-white"
-                    />
-                    <button
-                      type="submit"
-                      disabled={wishLoading}
-                      className="bg-[#4A7BC8] hover:bg-[#3b6bb3] text-white px-4 py-2 rounded-lg font-semibold text-xs transition-all cursor-pointer"
-                    >
-                      {wishLoading ? "..." : "Send"}
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-            </div>
-          </section>
+                
+                
 
           {/* Footer Section */}
           <footer className="relative py-16 px-6 bg-[#F5F8FF] text-center border-t border-[#7EA7E8]/10 overflow-hidden">
