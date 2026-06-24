@@ -73,22 +73,22 @@ export const weddingData = {
   },
   loveStory: [
     {
-      year: "2021",
-      title: "First Meet",
-      description: "Our paths crossed for the first time in a cozy art workshop. Amidst brushes and paints, a beautiful spark of friendship began to grow.",
-      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600",
-    },
-    {
       year: "2023",
-      title: "Relationship Journey",
-      description: "Two years of building memories, navigating dreams, and supporting each other through every high and low. We officially began our journey together.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600",
+      title: "First Meet",
+      description: "Hari pertama naik motor sama yughi:>",
+      image: "FirstMeet.jpeg",
     },
     {
       year: "2025",
-      title: "The Engagement",
-      description: "Underneath a canopy of stars on a quiet beach, Ralph asked, and Olivia happily said YES. The beginning of our forever.",
-      image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600",
+      title: "Comeback after Breakup?",
+      description: "Foto pertama setelah yughi ninggalin pari.",
+      image: "FotoRuning.jpeg",
+    },
+    {
+      year: "2026",
+      title: "The Graduation",
+      description: "Lulus dari Sirad YEYEYEY",
+      image: "FotoGrad.jpeg",
     },
   ] as LoveStoryItem[],
   dressCode: {

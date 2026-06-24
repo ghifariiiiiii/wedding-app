@@ -78,10 +78,10 @@ const FloralDecoration = ({ className }: { className?: string }) => (
 
 // Torn Paper Divider Component
 const TornDivider = ({ direction = "down" }: { direction?: "up" | "down" }) => {
-  const path = direction === "down" 
+  const path = direction === "down"
     ? "M0,0 C150,50 350,10 600,45 C850,80 1050,20 1200,35 L1200,80 L0,80 Z"
     : "M0,80 C150,30 350,70 600,35 C850,0 1050,60 1200,45 L1200,0 L0,0 Z";
-  
+
   return (
     <div className="relative w-full overflow-hidden leading-none z-10">
       <svg
@@ -100,10 +100,10 @@ export default function WeddingInvitation() {
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  
- 
 
-  
+
+
+
 
   // Lightbox Gallery State
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -113,7 +113,7 @@ export default function WeddingInvitation() {
     const calculateTime = () => {
       const difference = +new Date(weddingData.date.countdownTarget) - +new Date();
       if (difference <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-      
+
       return {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -130,9 +130,9 @@ export default function WeddingInvitation() {
     return () => clearInterval(interval);
   }, []);
 
-  
 
-  
+
+
 
   const handleOpenInvitation = () => {
     setIsOpen(true);
@@ -152,15 +152,15 @@ export default function WeddingInvitation() {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
-  
-  
 
-  
+
+
+
   return (
     <div className="relative min-h-screen">
       {/* Background Particles when invitation is open */}
       {isOpen && <FlowerParticles />}
-      
+
       {/* Background Music controls */}
       {isOpen && (
         <MusicPlayer
@@ -244,9 +244,10 @@ export default function WeddingInvitation() {
           <section className="relative min-h-screen flex flex-col justify-between items-center text-center py-16 px-6 overflow-hidden">
             {/* Romantic Background Cover */}
             <div
-              className="absolute inset-0 z-0 bg-cover bg-center brightness-[0.9]"
+              className="absolute inset-0 z-0 bg-cover brightness-[0.9]"
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(245, 248, 255, 1) 5%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.2) 100%), url(${weddingData.couple.romanticPhoto})`,
+                backgroundPosition: 'center 40%',
               }}
             />
 
@@ -261,7 +262,7 @@ export default function WeddingInvitation() {
                 <span className="text-white/90 text-sm tracking-[0.4em] uppercase font-medium drop-shadow-md">
                   The Wedding Of
                 </span>
-                
+
                 <h1 className="font-great-vibes text-7xl sm:text-8xl md:text-9xl text-white drop-shadow-lg font-normal py-4">
                   {weddingData.couple.bride.shortName} & {weddingData.couple.groom.shortName}
                 </h1>
@@ -303,7 +304,7 @@ export default function WeddingInvitation() {
               <div className="space-y-3">
                 <span className="font-great-vibes text-4xl text-[#7EA7E8]">Pendahuluan</span>
                 <h2 className="font-playfair text-4xl md:text-5xl text-[#4A7BC8] font-bold tracking-wide">
-                 Pasangan yang Berbahagia
+                  Pasangan yang Berbahagia
                 </h2>
                 <div className="w-20 h-1 bg-[#4A7BC8]/20 mx-auto rounded-full" />
                 <p className="text-gray-500 max-w-md mx-auto text-sm italic">
@@ -407,9 +408,8 @@ export default function WeddingInvitation() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
-                    className={`relative mb-16 md:w-1/2 md:px-8 ${
-                      idx % 2 === 0 ? "md:left-[-50%] md:text-right" : "md:left-[50%] md:text-left"
-                    }`}
+                    className={`relative mb-16 md:w-1/2 md:px-8 ${idx % 2 === 0 ? "md:left-[-50%] md:text-right" : "md:left-[50%] md:text-left"
+                      }`}
                   >
                     {/* Timeline Node */}
                     <div className="absolute top-1.5 -left-[9px] md:left-auto md:right-[-9px] w-4 h-4 rounded-full bg-[#4A7BC8] border-4 border-white shadow-md z-10" />
@@ -420,7 +420,7 @@ export default function WeddingInvitation() {
                         <span className="inline-block px-3 py-1 bg-[#4A7BC8] text-white text-xs font-semibold rounded-full tracking-wider mb-3">
                           {story.year}
                         </span>
-                        
+
                         <div className="aspect-[16/9] relative rounded-xl overflow-hidden mb-4 shadow-sm">
                           <img
                             src={story.image}
@@ -441,7 +441,7 @@ export default function WeddingInvitation() {
                 ))}
               </div>
             </div>
-            
+
             {/* Bottom torn divider */}
             <div className="absolute bottom-0 left-0 w-full">
               <TornDivider direction="down" />
@@ -703,7 +703,7 @@ export default function WeddingInvitation() {
                     onClick={() => {
                       setLightboxIndex(
                         (lightboxIndex - 1 + weddingData.gallery.length) %
-                          weddingData.gallery.length
+                        weddingData.gallery.length
                       );
                     }}
                     className="absolute left-6 text-white/80 hover:text-white"
@@ -732,7 +732,7 @@ export default function WeddingInvitation() {
             </AnimatePresence>
           </section>
 
-         
+
           {/* Wedding Gift / Digital Gift Section */}
           <section className="relative py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto space-y-12">
@@ -812,10 +812,10 @@ export default function WeddingInvitation() {
             </div>
           </section>
 
-        
 
-                
-                
+
+
+
 
           {/* Footer Section */}
           <footer className="relative py-16 px-6 bg-[#F5F8FF] text-center border-t border-[#7EA7E8]/10 overflow-hidden">
@@ -831,11 +831,11 @@ export default function WeddingInvitation() {
               <p className="font-playfair text-xl md:text-2xl font-semibold text-[#4A7BC8] italic">
                 Thank You For Being Part Of Our Special Day
               </p>
-              
+
               <h2 className="font-great-vibes text-5xl text-[#4A7BC8]">
                 Olivia & Ralph
               </h2>
-              
+
               <p className="text-xs uppercase font-extrabold tracking-widest text-[#7EA7E8]">
                 18 May 2027
               </p>
