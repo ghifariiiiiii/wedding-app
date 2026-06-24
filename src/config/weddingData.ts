@@ -1,6 +1,6 @@
 export interface WeddingEvent {
   title: string;
-  date: string; // e.g. "Sunday, 18 May 2027"
+  date: string; // e.g. "Sabtu, 9 April 2031"
   time: string; // e.g. "09:00 AM - 11:00 AM"
   venue: string;
   address: string;

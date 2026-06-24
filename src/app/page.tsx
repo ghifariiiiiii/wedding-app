@@ -301,9 +301,9 @@ export default function WeddingInvitation() {
 
             <div className="max-w-5xl mx-auto text-center space-y-12">
               <div className="space-y-3">
-                <span className="font-great-vibes text-4xl text-[#7EA7E8]">Introductions</span>
+                <span className="font-great-vibes text-4xl text-[#7EA7E8]">Pendahuluan</span>
                 <h2 className="font-playfair text-4xl md:text-5xl text-[#4A7BC8] font-bold tracking-wide">
-                  The Happy Couple
+                 Pasangan yang Berbahagia
                 </h2>
                 <div className="w-20 h-1 bg-[#4A7BC8]/20 mx-auto rounded-full" />
                 <p className="text-gray-500 max-w-md mx-auto text-sm italic">
