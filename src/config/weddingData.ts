@@ -44,19 +44,19 @@ export const weddingData = {
       photo: "/foto-pengantin-pria.jpg",
     },
     romanticPhoto: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1920",
-    openingBg: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1920",
+    openingBg: "/FotoWisuda.jpeg",
   },
   date: {
-    weddingDay: "18",
-    weddingMonthYear: "May 2027",
-    countdownTarget: "2027-05-18T09:00:00", // Future date for active countdown
-    formattedFull: "Sunday, 18 May 2027",
+    weddingDay: "9",
+    weddingMonthYear: "April 2027",
+    countdownTarget: "2027-04-09T09:00:00", // Future date for active countdown
+    formattedFull: "Sabtu, 9 April 2027",
   },
   musicUrl: "/lagu-weeding.mp3", // Local wedding music
   events: {
     akad: {
       title: "Akad Nikah",
-      date: "Sunday, 18 May 2027",
+      date: "Sabtu, 9 April 2027",
       time: "09:00 AM - 11:00 AM (WIB)",
       venue: "St. John's Luxury Cathedral",
       address: "Jl. Katedral No.7, Pasar Baru, Sawah Besar, Central Jakarta City",
@@ -64,7 +64,7 @@ export const weddingData = {
     } as WeddingEvent,
     reception: {
       title: "Wedding Reception",
-      date: "Sunday, 18 May 2027",
+      date: "Sabtu, 9 April 2027",
       time: "06:00 PM - 09:00 PM (WIB)",
       venue: "Grand Ballroom, The Ritz Palace",
       address: "Mega Kuningan Barat Kav. E.1.1, Kuningan, South Jakarta City",
