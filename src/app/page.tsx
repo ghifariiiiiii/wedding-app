@@ -307,7 +307,7 @@ export default function WeddingInvitation() {
                 </h2>
                 <div className="w-20 h-1 bg-[#4A7BC8]/20 mx-auto rounded-full" />
                 <p className="text-gray-500 max-w-md mx-auto text-sm italic">
-                  "And we created you in pairs" — Noble Qur'an / Holy Verse
+                  "Dan kami ciptakan kamu berpasang-pasangan" — Q.S. Adz-dzariyat: 49
                 </p>
               </div>
 
