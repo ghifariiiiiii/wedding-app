@@ -247,7 +247,7 @@ export default function WeddingInvitation() {
               className="absolute inset-0 z-0 bg-cover brightness-[0.9]"
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(245, 248, 255, 1) 5%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.2) 100%), url(${weddingData.couple.romanticPhoto})`,
-                backgroundPosition: 'center 40%',
+                backgroundPosition: 'center 35%',
               }}
             />
 
@@ -833,11 +833,11 @@ export default function WeddingInvitation() {
               </p>
 
               <h2 className="font-great-vibes text-5xl text-[#4A7BC8]">
-                Olivia & Ralph
+                Alghi & Yughi
               </h2>
 
               <p className="text-xs uppercase font-extrabold tracking-widest text-[#7EA7E8]">
-                18 May 2027
+                9 April 2027
               </p>
 
               <div className="w-16 h-[1px] bg-[#7EA7E8]/30 mx-auto my-4" />
