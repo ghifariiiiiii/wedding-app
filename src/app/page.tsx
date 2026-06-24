@@ -732,61 +732,7 @@ export default function WeddingInvitation() {
             </AnimatePresence>
           </section>
 
-          {/* Entourage Section */}
-          <section className="relative py-24 px-6 bg-[#F5F8FF]">
-            <div className="max-w-5xl mx-auto space-y-12">
-              <div className="text-center space-y-3">
-                <span className="font-great-vibes text-4xl text-[#7EA7E8]">Entourage</span>
-                <h2 className="font-playfair text-4xl md:text-5xl text-[#4A7BC8] font-bold tracking-wide">
-                  Groomsmen & Bridesmaids
-                </h2>
-                <div className="w-20 h-1 bg-[#4A7BC8]/20 mx-auto rounded-full" />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-12">
-                {/* Bridesmaids Grid */}
-                <div className="space-y-6">
-                  <h3 className="font-playfair text-xl font-bold text-[#4A7BC8] text-center border-b pb-2">
-                    Bridesmaids
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {weddingData.entourage.bridesmaids.map((member) => (
-                      <div
-                        key={member.name}
-                        className="bg-white p-4 rounded-xl shadow-sm border border-[#7EA7E8]/10 text-center"
-                      >
-                        <p className="font-semibold text-[#4A7BC8] text-sm">{member.name}</p>
-                        <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">
-                          {member.role}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Groomsmen Grid */}
-                <div className="space-y-6">
-                  <h3 className="font-playfair text-xl font-bold text-[#4A7BC8] text-center border-b pb-2">
-                    Groomsmen
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {weddingData.entourage.groomsmen.map((member) => (
-                      <div
-                        key={member.name}
-                        className="bg-white p-4 rounded-xl shadow-sm border border-[#7EA7E8]/10 text-center"
-                      >
-                        <p className="font-semibold text-[#4A7BC8] text-sm">{member.name}</p>
-                        <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">
-                          {member.role}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
+         
           {/* Wedding Gift / Digital Gift Section */}
           <section className="relative py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto space-y-12">
